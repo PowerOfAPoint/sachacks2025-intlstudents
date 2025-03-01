@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "@/components/header";
 
 const mockThreads = [
   { id: "1", title: "hi" },
@@ -16,7 +16,7 @@ export default function ChatPage() {
 
   return (
     <>
-          <style>
+      <style>
         {`
           html, body {
             height: 100%;
@@ -27,7 +27,6 @@ export default function ChatPage() {
 
       <Header />
       <div className="flex h-[93vh] bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200">
-        
         {/* Left Sidebar */}
         <aside className="w-96 h-[93vh] border-r border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-4 space-y-4">
           <h2 className="text-xl font-bold">Library</h2>
@@ -46,7 +45,6 @@ export default function ChatPage() {
               </li>
             ))}
           </ul>
-
         </aside>
 
         {/* Main Chat Area */}
@@ -57,7 +55,7 @@ export default function ChatPage() {
 
           {/* Chat Messages - Only this section scrolls */}
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
-          <div className="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-md">
+            <div className="p-4 bg-neutral-100 dark:bg-neutral-800 rounded-md">
               <p>Hello! How can I help you with {currentThread.title}?</p>
             </div>
             <div className="p-4 bg-blue-100 dark:bg-blue-900 rounded-md self-end">
@@ -124,4 +122,3 @@ export default function ChatPage() {
     </>
   );
 }
-
