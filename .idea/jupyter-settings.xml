@@ -3,6 +3,14 @@
   <component name="JupyterPersistentConnectionParameters">
     <option name="moduleParameters">
       <map>
+        <entry key="$PROJECT_DIR$/.idea/sachacks2025-intlstudents.iml">
+          <value>
+            <JupyterConnectionParameters>
+              <option name="managed" value="true" />
+              <option name="sdkName" value="" />
+            </JupyterConnectionParameters>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/PycharmProjects/us-vaccine-tracker/.idea/us-vaccine-tracker.iml">
           <value>
             <JupyterConnectionParameters>
