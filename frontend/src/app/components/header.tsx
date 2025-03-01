@@ -10,7 +10,7 @@ export default function Header() {
         {/* Logo + Brand */}
         <Link href="/" className="flex items-center space-x-3">
         <Image src="/logo.png" alt="Flocks Logo" width={40} height={12} />
-            <h1 className="text-2xl font-extrabold">flocks</h1>
+            <h1 className="text-2xl font-extrabold">flock</h1>
           </Link>
 
         {/* Navigation Links */}
