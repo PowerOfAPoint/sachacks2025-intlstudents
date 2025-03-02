@@ -8,22 +8,12 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step4Page() {
   const tasks = [
-    {
-      title: "Complete Form I-983: Training Plan",
-      description: "Work with your employer to complete the Training Plan and submit to your DSO.",
-    },
-    {
-      title: "Submit Form I-765",
-      description: "Submit Form I-765 along with supporting documents and application fee payment.",
-    },
-    {
-      title: "Submit Validation Reports",
-      description: "USCIS may request additional evidence. Report any changes in employment or address to your DSO within 10 days.",
-    },
-    {
-      title: "Receive Updated EAD Card",
-      description: "Once approved, you will receive your updated Employment Authorization Document (EAD).",
-    },
+    "Confirm Eligibility for STEM OPT Extension",
+    "Prepare Form I-765 and Form I-983",
+    "Get Employer’s E-Verify Number",
+    "Submit Application to School DSO",
+    "Mail Application to USCIS",
+    "Track Application Status",
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -52,7 +42,9 @@ export default function Step4Page() {
         <div className="w-full max-w-7xl grid grid-cols-12 gap-8">
           {/* Back to Roadmap */}
           <div className="col-span-12">
-            <ViewPreviousButton href="/roadmap/page3" label="OPT Application" />
+            <a href="/roadmap" className="text-gray-500 hover:text-blue-600 text-sm font-medium cursor-pointer">
+              ← Back to Roadmap
+            </a>
           </div>
 
           {/* Progress Circle - Left Column */}
@@ -90,34 +82,30 @@ export default function Step4Page() {
 
           {/* Checklist - Right Column */}
           <div className="col-span-6 space-y-4 self-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Milestone 4: STEM OPT Extension</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 4 Tasks</h3>
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`p-4 rounded-lg shadow-sm border cursor-pointer transition-all space-y-2 ${
+                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-800 font-semibold">{task.title}</span>
-                  {completedTasks[index] ? (
-                    <CheckCircle className="text-green-600" size={24} />
-                  ) : (
-                    <Circle className="text-gray-400" size={24} />
-                  )}
-                </div>
-                <hr className="border-t border-gray-200" />
-                <p className="text-gray-600 text-sm">{task.description}</p>
+                <span className="text-gray-800">{task}</span>
+                {completedTasks[index] ? (
+                  <CheckCircle className="text-green-600" size={24} />
+                ) : (
+                  <Circle className="text-gray-400" size={24} />
+                )}
               </div>
             ))}
 
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-6">
-              <ViewPreviousButton href="/roadmap/page3" label="OPT Application" />
-              <ViewNextButton href="/roadmap/page5" label="Cap-Gap Extension" />
+              <ViewPreviousButton href="/roadmap/page3" label="View Previous: OPT Application" />
+              <ViewNextButton href="/roadmap/page5" label="View Next: Cap-Gap Extension" />
             </div>
           </div>
         </div>

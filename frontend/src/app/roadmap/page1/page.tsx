@@ -8,36 +8,11 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step1Page() {
   const tasks = [
-    {
-      title: "Contact Your DSO",
-      description: [
-        "Please schedule a meeting with your DSO and relevant parties to confirm your program allows CPT.",
-      ],
-    },
-    {
-      title: "Check Eligibility Requirement",
-      description: [
-        "Verify you meet the eligibility criteria for Day 1 CPT, including full-time enrollment and program type.",
-      ],
-    },
-    {
-      title: "Enroll in CPT-Eligible Course",
-      description: [
-        "Ensure the course you choose is directly linked to your practical training experience.",
-      ],
-    },
-    {
-      title: "Submit CPT Application to School",
-      description: [
-        "Complete and submit all CPT application documents to your DSO for review and approval.",
-      ],
-    },
-    {
-      title: "Receive CPT Authorization",
-      description: [
-        "Once approved, your new I-20 will include CPT authorization, which allows you to start working.",
-      ],
-    },
+    "Contact School Advisor",
+    "Check Eligibility Requirement",
+    "Enroll in CPT-Eligible Course",
+    "Submit CPT Application to School",
+    "Receive CPT Authorization",
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -108,25 +83,14 @@ export default function Step1Page() {
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`flex justify-between items-start p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
+                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                {/* Left Side - Text */}
-                <div className="flex-1">
-                  <p className="font-semibold text-gray-900">{task.title}</p>
-                  <hr className="my-2 border-gray-300" />
-                  <ul className="list-disc pl-5 text-gray-600 text-sm space-y-1">
-                    {task.description.map((desc, i) => (
-                      <li key={i}>{desc}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Right Side - Icon */}
+                <span className="text-gray-800">{task}</span>
                 {completedTasks[index] ? (
                   <CheckCircle className="text-green-600" size={24} />
                 ) : (
