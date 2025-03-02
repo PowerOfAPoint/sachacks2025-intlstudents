@@ -18,6 +18,14 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { authClient } from "@/lib/auth/client";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function SignInPage() {
   const form = useForm<TSignIn>({
@@ -43,27 +51,15 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex flex-row h-screen">
-      {/* Left Side - Branding + Value Prop */}
-      <div className="relative xl:w-2/3 md:w-1/2 sm:flex hidden flex-col justify-center items-center p-12 space-y-8">
-        <h1 className="text-4xl font-extrabold">welcome back to flock</h1>
-        <p className="text-lg text-muted-foreground max-w-md text-center leading-relaxed">
-          Sign in to access your personalized visa & career roadmap.
-        </p>
-        {/* Optional - Background Gradient */}
-        <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-blue-500 via-indigo-600 to-black/5 pointer-events-none"></div>
-      </div>
-
-      {/* Right Side - Sign In Form */}
-      <div className="min-h-screen flex items-center justify-center flex-1">
-        <div className="w-full max-w-md border-neutral-500 space-y-6 rounded-lg p-8 shadow-lg border mx-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold">Sign In to Your Account</h1>
-            <p className="text-muted-foreground">
-              Welcome back! Enter your details below.
-            </p>
-          </div>
-
+    <div className="min-h-screen flex items-center justify-center flex-1">
+      <Card className="max-w-md mx-6 w-full">
+        <CardHeader>
+          <CardTitle className="text-2xl">Sign In to Your Account</CardTitle>
+          <CardDescription className="">
+            Welcome back! Enter your details below.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
           <Form {...form}>
             <form
               className="space-y-6"
@@ -77,10 +73,10 @@ export default function SignInPage() {
                   <FormItem className="flex flex-col">
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <input
+                      <Input
                         type="email"
+                        className="py-2"
                         placeholder="you@example.com"
-                        className="block rounded-md px-4 py-2 placeholder-gray-500 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                         {...field}
                       />
                     </FormControl>
@@ -95,11 +91,7 @@ export default function SignInPage() {
                   <FormItem className="flex flex-col">
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <input
-                        type="password"
-                        className="rounded-md px-4 py-2 placeholder-gray-500 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-                        {...field}
-                      />
+                      <Input className="py-2" type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -123,14 +115,14 @@ export default function SignInPage() {
             </form>
           </Form>
 
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground mt-2">
             Don't have an account?{" "}
             <Link href="/sign-up" className="text-blue-400 hover:underline">
-              Sign up here
+              Sign up
             </Link>
           </p>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

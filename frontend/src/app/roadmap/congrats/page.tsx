@@ -32,6 +32,8 @@ export default function CongratsPage() {
               alt="Congratulations Animation"
               className="mx-auto"
             />
+          {/* Title Area - Centered */}
+          <div className="col-span-12 text-center space-y-4">
             <h1 className="text-4xl font-bold text-green-600">🎉 Congratulations!</h1>
             <p className="text-lg text-gray-700">
               You’ve successfully completed every milestone on your visa journey!
@@ -52,6 +54,7 @@ export default function CongratsPage() {
               </button>
             </Link>
           </div>
+
         </div>
       </div>
     </>
