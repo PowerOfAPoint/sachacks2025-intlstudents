@@ -8,17 +8,22 @@ export type Result<T = void, E = Error> =
       error: E;
     };
 
-export function ok<T>(data?: T | void): Result<T | void, never> {
+export type AsyncResult<T = void, E = Error> = Promise<Result<T, E>>;
+
+export function ok<T = void, E = Error>(data?: T): Result<T, E> {
   return {
     ok: true,
-    data,
+    data: data as T,
   };
 }
 
-export function err<E>(error?: E): Result<never, E> {
+export function err<T = void, E = Error>(error?: E): Result<T, E> {
   return {
     ok: false,
-    error: error ?? (new Error() as E),
+    error:
+      error === undefined
+        ? (new Error("Unknown error") as unknown as E)
+        : error,
   };
 }
 

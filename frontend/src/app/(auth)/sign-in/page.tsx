@@ -26,6 +26,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { redirect } from "@/app/api/_actions/redirect";
 
 export default function SignInPage() {
   const form = useForm<TSignIn>({
@@ -40,7 +41,7 @@ export default function SignInPage() {
     const { data, error } = await authClient.signIn.email({
       email: values.email,
       password: values.password,
-      callbackURL: "/dashboard",
+      callbackURL: "/",
     });
 
     if (error) {
@@ -48,6 +49,8 @@ export default function SignInPage() {
         description: error.message,
       });
     }
+
+    await redirect("/");
   };
 
   return (
