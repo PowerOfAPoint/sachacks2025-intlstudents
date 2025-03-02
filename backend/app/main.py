@@ -1,12 +1,11 @@
 from typing import List, Any
 
 import uvicorn
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from langchain_core.documents import Document
 from langchain_core.messages import SystemMessage, HumanMessage
 from pydantic import BaseModel, Field
-from dotenv import load_dotenv
 
 from backend.app.core import agent
 
@@ -60,7 +59,8 @@ async def process_query(
 
         return Response(
             response=step['messages'][-1].content,
-            sources=[doc for docs in step['context'] for doc in docs] if (step['context'] and step['context'][0]) else []
+            sources=[doc for docs in [docs for docs in step['context'] if docs is not None] for doc in docs] if len(
+                step['context']) > 0 else []
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

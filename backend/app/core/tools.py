@@ -1,6 +1,6 @@
 from typing import Tuple, Any
 
-import chromadb.api
+import chromadb.api.client
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.tools import DuckDuckGoSearchResults
