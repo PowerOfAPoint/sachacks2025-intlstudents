@@ -1,0 +1,14 @@
+uvicorn>=0.34.0
+fastapi>=0.115.10
+fastapi-cli
+pydantic>=2.10.6
+langchain>=0.3.19
+python-dotenv>=1.0.1
+langchain-community>=0.3.18
+langchain-openai>=0.3.7
+langchain-text-splitters>=0.3.6
+langchain-core>=0.3.40
+typing_extensions>=4.12.2
+langgraph>=0.3.2
+langchain-chroma
+ipython>=9.0.0
