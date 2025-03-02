@@ -23,6 +23,7 @@ const slides = [
         <li>Ensure the internship aligns with your field of study and career goals.</li>
       </ul>
     ),
+    link:"roadmap/page1",
   },
   {
     title: "Day 1 CPT",
@@ -35,6 +36,7 @@ const slides = [
         <li>Deadline: Apply at least 2 months before internship starts.</li>
       </ul>
     ),
+    link:"roadmap/page2",
   },
   {
     title: "OPT Application",
@@ -47,6 +49,7 @@ const slides = [
         <li>Deadline: Apply within 90 days before graduation.</li>
       </ul>
     ),
+    link:"roadmap/page3",
   },
   {
     title: "STEM OPT Extension",
@@ -59,6 +62,7 @@ const slides = [
         <li>Deadline: Apply within 90 days before OPT ends.</li>
       </ul>
     ),
+    link:"roadmap/page4",
   },
   {
     title: "Cap-Gap Extension",
@@ -70,6 +74,7 @@ const slides = [
         <li>Confirm eligibility with your employer.</li>
       </ul>
     ),
+    link:"roadmap/page5",
   },
   {
     title: "H-1B Visa Application",
@@ -81,6 +86,7 @@ const slides = [
         <li>Deadline: Apply on April 1 during the annual cap season.</li>
       </ul>
     ),
+    link:"roadmap/page6",
   },
   {
     title: "H-1B Visa Approval",
@@ -92,6 +98,7 @@ const slides = [
         <li>Understand timelines for each stage (PERM, I-140, Adjustment of Status).</li>
       </ul>
     ),
+    link:"roadmap/page7",
   },
   {
     title: "Apply For Citizenship",
@@ -103,6 +110,7 @@ const slides = [
         <li>Understand timelines for each stage (PERM, I-140, Adjustment of Status).</li>
       </ul>
     ),
+    link:"roadmap/page8",
   },
 ];
 
@@ -115,6 +123,7 @@ const items = slides.map((slide, index) => (
       title: slide.title,
       category: slide.category,
       content: slide.content,
+      link: slide.link,
     }}
     index={index}
     layout={true}
@@ -141,14 +150,14 @@ export default function RoadmapPage() {
 
   return (
     <>
-      <style>
+      {/* <style>
         {`
           html, body {
             height: 100%;
             overflow: hidden;
           }
         `}
-      </style>
+      </style> */}
 
       {/* Fixed Header */}
       <div className="fixed top-0 left-0 w-full z-20 bg-white shadow-md">

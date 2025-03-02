@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import Link from "next/link";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -26,6 +27,7 @@ type Card = {
   title: string;
   category: string;
   content: React.ReactNode;
+  link: string;
 };
 
 export const CarouselContext = createContext<{
@@ -232,6 +234,11 @@ export const Card = ({
                 {card.title}
               </motion.p>
               <div className="py-10">{card.content}</div>
+              <Link href={card.link}>
+                <button className="px-4 py-2 bg-[#1B768E] text-white rounded-md hover:bg-[#012538] transition">
+                  Let's go
+                </button>
+              </Link>{" "}
             </motion.div>
           </div>
         )}
