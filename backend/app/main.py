@@ -1,7 +1,7 @@
 from typing import List
 
 import uvicorn
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from langchain_core.documents import Document
 from langchain_core.messages import SystemMessage, HumanMessage
