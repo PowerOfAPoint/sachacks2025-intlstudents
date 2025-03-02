@@ -48,7 +48,7 @@ export default function LandingPage() {
           <h1 className="text-6xl font-extrabold leading-tight">
             No More Visa Confusion
             <br />
-            <span className="text-blue-400"> Just Clear Roadmaps</span>
+            <span className="text-[#1B768E]"> Just Clear Roadmaps</span>
           </h1>
 
           {/* Subheading */}
@@ -61,7 +61,7 @@ export default function LandingPage() {
           {/* Call to Action */}
           <a
             href="/sign-up"
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-blue-500 transition"
+            className="inline-block bg-[#1B768E] text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-[#012538] transition"
           >
             Join Today - It’s Free
           </a>
