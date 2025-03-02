@@ -114,11 +114,33 @@ export default function Step2Page() {
               </div>
             ))}
 
+
+                        {/* Extra Info */}
+                        <div className="mt-6 p-4 bg-gray-50 border rounded-lg">
+              <h4 className="font-semibold text-gray-800 mb-2">Important Details</h4>
+              <h4 className="mt-4 font-semibold text-gray-800">Resources</h4>
+              <ul className="list-disc list-inside text-sm text-blue-600">
+                <li>
+                  <a
+                    href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    USCIS: Working in the United States
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-6">
               <ViewPreviousButton href="/roadmap/page1" label="Internship Offer" />
               <ViewNextButton href="/roadmap/page3" label="OPT Application" />
             </div>
+
+
           </div>
         </div>
       </div>

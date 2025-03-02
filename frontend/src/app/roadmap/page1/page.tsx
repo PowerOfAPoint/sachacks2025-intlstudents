@@ -8,36 +8,8 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step1Page() {
   const tasks = [
-    {
-      title: "Contact Your DSO",
-      description: [
-        "Please schedule a meeting with your DSO and relevant parties to confirm your program allows CPT.",
-      ],
-    },
-    {
-      title: "Check Eligibility Requirement",
-      description: [
-        "Verify you meet the eligibility criteria for Day 1 CPT, including full-time enrollment and program type.",
-      ],
-    },
-    {
-      title: "Enroll in CPT-Eligible Course",
-      description: [
-        "Ensure the course you choose is directly linked to your practical training experience.",
-      ],
-    },
-    {
-      title: "Submit CPT Application to School",
-      description: [
-        "Complete and submit all CPT application documents to your DSO for review and approval.",
-      ],
-    },
-    {
-      title: "Receive CPT Authorization",
-      description: [
-        "Once approved, your new I-20 will include CPT authorization, which allows you to start working.",
-      ],
-    },
+    "Receive your offer letter",
+    "I’ve received my offer letter",
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -99,34 +71,24 @@ export default function Step1Page() {
                 {completionPercentage}%
               </div>
             </div>
-            <span className="text-lg text-gray-600">Day 1 CPT Checklist</span>
+            <span className="text-lg text-gray-600">Internship Offer Checklist</span>
           </div>
 
           {/* Checklist - Right Column */}
           <div className="col-span-6 space-y-4 self-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 1 Tasks</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Milestone 1: Internship Offer</h3>
+
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`flex justify-between items-start p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
+                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                {/* Left Side - Text */}
-                <div className="flex-1">
-                  <p className="font-semibold text-gray-900">{task.title}</p>
-                  <hr className="my-2 border-gray-300" />
-                  <ul className="list-disc pl-5 text-gray-600 text-sm space-y-1">
-                    {task.description.map((desc, i) => (
-                      <li key={i}>{desc}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Right Side - Icon */}
+                <span className="text-gray-800">{task}</span>
                 {completedTasks[index] ? (
                   <CheckCircle className="text-green-600" size={24} />
                 ) : (
@@ -135,10 +97,33 @@ export default function Step1Page() {
               </div>
             ))}
 
+            {/* Extra Info */}
+            <div className="mt-6 p-4 bg-gray-50 border rounded-lg">
+              <h4 className="font-semibold text-gray-800 mb-2">Important Details</h4>
+              <p className="text-sm text-gray-600">
+                Congratulations! Receiving your offer letter is your first major milestone. Make sure the offer is in your field of study and aligns with your long-term career goals.
+              </p>
+              <h4 className="mt-4 font-semibold text-gray-800">Deadline</h4>
+              <p className="text-sm text-gray-600">Complete this step as soon as you receive an offer letter.</p>
+              <h4 className="mt-4 font-semibold text-gray-800">Resources</h4>
+              <ul className="list-disc list-inside text-sm text-blue-600">
+                <li>
+                  <a
+                    href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    USCIS: Working in the United States
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-6">
               <ViewPreviousButton href="/roadmap" label="Roadmap Overview" />
-              <ViewNextButton href="/roadmap/page2" label="Internship & OPT" />
+              <ViewNextButton href="/roadmap/page2" label="Day 1 CPT" />
             </div>
           </div>
         </div>

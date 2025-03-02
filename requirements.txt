@@ -1,4 +1,3 @@
-pydantic-settings>=2.8.1
 uvicorn>=0.34.0
 fastapi>=0.115.10
 fastapi-cli
@@ -11,3 +10,5 @@ langchain-text-splitters>=0.3.6
 langchain-core>=0.3.40
 typing_extensions>=4.12.2
 langgraph>=0.3.2
+langchain-chroma
+ipython>=9.0.0
