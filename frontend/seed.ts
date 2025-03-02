@@ -1,7 +1,12 @@
 import { db } from "@/lib/db";
 import { Group, group } from "@/lib/db/forum";
+import { exit } from "process";
 
 const mockGroups: Omit<Group, "id">[] = [
+  {
+    name: "Internship",
+    slug: "internship",
+  },
   {
     name: "CPT",
     slug: "cpt",
@@ -28,10 +33,13 @@ async function seed() {
   console.info("Seeding db");
 
   try {
-    await db.insert(group).values(mockGroups);
+    await db.insert(group).values(mockGroups).onConflictDoNothing();
+    console.info("done");
   } catch (e) {
     console.error(e);
   }
+
+  exit(0); // process hangs without this
 }
 
 seed();

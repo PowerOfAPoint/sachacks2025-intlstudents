@@ -12,20 +12,13 @@ import {
 import { createId as cuid } from "@paralleldrive/cuid2";
 import { user } from "../auth";
 
-// export const role = pgTable("role", {
-//   roleId: serial("role_id").notNull().primaryKey(),
-//   name: text("name", {
-//     enum: [
-//       "verified::cpt",
-//       "verified::opt",
-//       "verified::stem-opt",
-//       "verified::cap-gap",
-//       "verified::h-1b",
-//       "verified::internship",
-//     ],
-//   }),
-// });
-//
+export const role = pgTable("role", {
+  id: serial("id").notNull().primaryKey(),
+  name: text("name").notNull().unique(),
+  groupId: text("group_id")
+    .notNull()
+    .references(() => group.id),
+});
 
 export type Group = typeof group.$inferSelect;
 export const group = pgTable(
@@ -72,6 +65,20 @@ export const post = pgTable(
     updatedAt: timestamp("updated_at").$onUpdateFn(() => new Date()),
   },
   (t) => [index("post_author_idx").on(t.authorId)],
+);
+
+export const vote = pgTable(
+  "vote",
+  {
+    id: serial("id").primaryKey(),
+    objType: text("obj_type", { enum: ["post", "comment"] }).notNull(),
+    objId: text("obj_id").notNull(),
+    voteType: text("vote_type", { enum: ["upvote", "downvote"] }).notNull(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id),
+  },
+  (t) => [unique("unique_post_vote").on(t.objId, t.userId)],
 );
 
 export type Tag = typeof tag.$inferSelect;

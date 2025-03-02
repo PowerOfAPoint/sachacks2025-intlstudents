@@ -6,12 +6,13 @@ import {
   post,
   tag,
   tagsToPosts,
+  vote,
 } from "./schema";
 import { user } from "../auth";
 
 export const groupRelations = relations(group, ({ many }) => ({
   posts: many(post, { relationName: "post_groups" }),
-  members: many(groupsToUsers, { relationName: "group_members" }),
+  members: many(groupsToUsers, { relationName: "groups_to_user" }),
 }));
 
 export const groupsToUsersRelations = relations(groupsToUsers, ({ one }) => ({
@@ -40,6 +41,20 @@ export const postRelations = relations(post, ({ one, many }) => ({
   }),
   tags: many(tagsToPosts, { relationName: "posts_to_tags" }),
   comments: many(comment, { relationName: "comments" }),
+  votes: many(vote, { relationName: "post_votes" }),
+}));
+
+export const voteRelations = relations(vote, ({ one }) => ({
+  // post: one(post, {
+  //   fields: [vote.],
+  //   references: [post.id],
+  //   relationName: "post_votes",
+  // }),
+  user: one(user, {
+    fields: [vote.userId],
+    references: [user.id],
+    relationName: "user_votes",
+  }),
 }));
 
 export const tagRelations = relations(tag, ({ many }) => ({

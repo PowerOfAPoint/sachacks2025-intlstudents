@@ -2,9 +2,17 @@
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { comment, post } from "@/lib/db/forum";
+import { comment, post, vote } from "@/lib/db/forum";
 import { AsyncResult, err, ok } from "@/lib/types";
-import { Post, Reply, TPost, TReply } from "@/lib/validation/forum";
+import { getBaseUrl } from "@/lib/utils";
+import {
+  Post,
+  Reply,
+  TPost,
+  TReply,
+  TVote,
+  Vote,
+} from "@/lib/validation/forum";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -99,5 +107,43 @@ export async function createReply(data: TReply): AsyncResult<void, string> {
   } catch (error) {
     console.error("Error creating post:", error);
     return err("Failed to create post");
+  }
+}
+
+export async function castVote(data: TVote): AsyncResult<void, string> {
+  const validate = Vote.safeParse(data);
+  if (!validate.success) {
+    return err(validate.error.issues[0].message);
+  }
+
+  const { voteType, objId, objType } = validate.data;
+
+  const user = await auth.api
+    .getSession({
+      headers: await headers(),
+    })
+    .then((s) => s?.user);
+  if (!user) {
+    return redirect("/sign-in");
+  }
+
+  try {
+    await db
+      .insert(vote)
+      .values([
+        {
+          userId: user.id,
+          voteType,
+          objId,
+          objType,
+        },
+      ])
+      .onConflictDoNothing();
+    revalidatePath(`${getBaseUrl()}/api/forum/posts/${objId}`);
+
+    return ok();
+  } catch (error) {
+    console.error("Error creating post:", error);
+    return err("Failed to vote on post");
   }
 }

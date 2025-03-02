@@ -15,3 +15,10 @@ export const Reply = z.object({
     .custom<JSONContent>()
     .refine((data) => typeof data === "object" && Object.keys(data).length > 0),
 });
+
+export type TVote = z.infer<typeof Vote>;
+export const Vote = z.object({
+  objId: z.string(),
+  objType: z.union([z.literal("post"), z.literal("comment")]),
+  voteType: z.union([z.literal("upvote"), z.literal("downvote")]),
+});

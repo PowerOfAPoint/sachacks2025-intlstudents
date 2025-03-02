@@ -40,17 +40,24 @@ export async function fetchPosts(
   if (offset) url.searchParams.set("offset", offset.toString());
   if (limit) url.searchParams.set("limit", limit.toString());
 
-  const res = await fetch(url, { signal });
+  try {
+    const res = await fetch(url, { signal });
 
-  const json = (await res.json()) as Result<PostData[], string>;
-  if (!json.ok) {
-    toast.error("An error occurred", {
-      description: json.error,
-    });
+    const json = (await res.json()) as Result<PostData[], string>;
+    if (!json.ok) {
+      toast.error("An error occurred", {
+        description: json.error,
+      });
+      return [];
+    }
+
+    return json.data;
+  } catch (err) {
+    // toast.error("An error occurred", {
+    //   description: "Something went wrong. Please try again later.",
+    // });
     return [];
   }
-
-  return json.data;
 }
 
 export async function fetchPost(id: string) {

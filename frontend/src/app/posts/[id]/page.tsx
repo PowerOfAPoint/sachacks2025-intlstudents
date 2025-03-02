@@ -24,12 +24,15 @@ import { generateHTML } from "@tiptap/html";
 import { defaultExtensions } from "@/components/wysiwyg/extensions";
 import { JSONContent } from "novel";
 import { RenderReply } from "./_render-reply";
+import { castVote } from "@/app/api/_actions/post";
+import { VotingArea } from "./_voting-area";
 
 export default async function PostPage({
-  params: { id: postId },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id: postId } = await params;
   const post = await fetchPost(postId);
   if (!post) return notFound();
 
@@ -74,17 +77,10 @@ export default async function PostPage({
           {/* </CardContent> */}
           <CardFooter className="pt-4 border-t">
             <div className="flex items-center gap-4 text-sm">
-              <Button variant="ghost" size="sm" className="gap-1">
-                <ChevronUp className="size-6" />
-                <span>12</span>
-              </Button>
-              <Button variant="ghost" size="sm" className="gap-1">
-                <ChevronDown className="size-6" />
-                <span>-2</span>
-              </Button>
+              <VotingArea objId={post.id} objType="post" />
               <Button variant="ghost" size="sm" className="gap-1">
                 <MessageSquare className="size-5" />
-                <span>3 Answers</span>
+                <span>{post.comments.length} Answers</span>
               </Button>
               <Button variant="ghost" size="sm">
                 <Share2 className="size-5" />
@@ -116,7 +112,7 @@ export default async function PostPage({
                           </span>
                         </div>
                         <p className="text-xs text-muted-foreground">
-                          H-1B holder
+                          {/* H-1B holder */}
                         </p>
                       </div>
                     </div>
@@ -127,17 +123,10 @@ export default async function PostPage({
                 </CardContent>
                 <CardFooter className="pt-4 flex justify-between border-t">
                   <div className="flex items-center gap-4 text-sm">
-                    <Button variant="ghost" size="sm" className="gap-1">
-                      <ChevronUp className="size-6" />
-                      <span>12</span>
-                    </Button>
-                    <Button variant="ghost" size="sm" className="gap-1">
-                      <ChevronDown className="size-6" />
-                      <span>-2</span>
-                    </Button>
+                    <VotingArea objId={reply.id} objType="comment" />
                     <Button variant="ghost" size="sm" className="gap-1">
                       <MessageSquare className="size-5" />
-                      <span>3</span>
+                      <span>0</span>
                     </Button>
                     <Button variant="ghost" size="sm">
                       <Share2 className="size-5" />
