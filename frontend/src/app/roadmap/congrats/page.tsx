@@ -26,6 +26,15 @@ export default function CongratsPage() {
             </Link>
           </div>
 
+          {/* GIF Section */}
+          <div className="col-span-12 flex justify-center">
+            <img
+              src="/congrats.gif"
+              alt="Congratulations Animation"
+              className="w-64 h-64 object-contain"
+            />
+          </div>
+
           {/* Title Area - Centered */}
           <div className="col-span-12 text-center space-y-4">
             <h1 className="text-4xl font-bold text-green-600">🎉 Congratulations!</h1>
@@ -33,10 +42,8 @@ export default function CongratsPage() {
               You’ve successfully completed all steps in the roadmap.
             </p>
             <p className="text-gray-600">
-              From Day 1 CPT to Citizenship, you’ve navigated every milestone like a pro.
-            </p>
+            You're now a roadmap pro! Let's pay it forward by helping others in the forum — after all, we fly farther when we fly together.            </p>
           </div>
-
 
         </div>
       </div>
