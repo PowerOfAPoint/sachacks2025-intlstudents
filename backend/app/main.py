@@ -8,7 +8,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
-from .core import agent
+from backend.app.core import agent
 
 load_dotenv(override=True)
 app = FastAPI(title="Flock LLM chatbot", description="For SacHacks 2025. API for Flock's LLM chatbot.")

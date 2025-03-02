@@ -1,6 +1,7 @@
 pydantic-settings>=2.8.1
 uvicorn>=0.34.0
 fastapi>=0.115.10
+fastapi-cli
 pydantic>=2.10.6
 langchain>=0.3.19
 python-dotenv>=1.0.1
