@@ -15,7 +15,7 @@ interface Step {
 const slides = [
   {
     title: "Internship Offer",
-    category: "Milestone",
+    category: "Milestone 1",
     src: "/step1.png",
     content: (
       <ul className="list-disc pl-5">
@@ -26,7 +26,7 @@ const slides = [
   },
   {
     title: "Day 1 CPT",
-    category: "Milestone",
+    category: "Milestone 2",
     src: "/step2.png",
     content: (
       <ul className="list-disc pl-5">
@@ -38,8 +38,8 @@ const slides = [
   },
   {
     title: "OPT Application",
-    category: "Milestone",
-    src: "/images/opt-application.jpg",
+    category: "Milestone 3",
+    src: "/step3.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Apply for Optional Practical Training (OPT) after graduation.</li>
@@ -50,8 +50,8 @@ const slides = [
   },
   {
     title: "STEM OPT Extension",
-    category: "Milestone",
-    src: "/images/stem-opt.jpg",
+    category: "Milestone 4",
+    src: "/step4.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Apply for a 24-month STEM OPT extension.</li>
@@ -63,7 +63,7 @@ const slides = [
   {
     title: "Cap-Gap Extension",
     category: "Milestone",
-    src: "/images/cap-gap.jpg",
+    src: "/step5.png",
     content: (
       <ul className="list-disc pl-5">
         <li>If your H-1B is pending, apply for Cap-Gap extension.</li>
@@ -74,7 +74,7 @@ const slides = [
   {
     title: "H-1B Visa Application",
     category: "Milestone",
-    src: "/images/h1b-application.jpg",
+    src: "/step6.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Work with your employer to file the H-1B petition.</li>
@@ -96,7 +96,7 @@ const slides = [
   {
     title: "Apply For Citizenship",
     category: "Milestone",
-    src: "/step7.png",
+    src: "/step8.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Start the PERM labor certification process with your employer.</li>
@@ -156,13 +156,13 @@ export default function RoadmapPage() {
       </div>
 
       {/* Main Roadmap Section */}
-      <div className="min-h-screen flex flex-col items-center bg-gray-100 px-6 py-10">
-        <h1 className="text-4xl font-extrabold text-gray-900 mt-16 text-center">
-          Your Visa & Career Roadmap
-        </h1>
+      <div className="min-h-screen mt-14 px-6 py-10">
+        <h2 className=" pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+            Your Complete Roadmap.
+        </h2>
 
         {/* Carousel Section */}
-        <div className="flex justify-center items-center min-h-[60vh] mt-8 w-full">
+        <div className="flex justify-center items-center min-h-[60vh] w-full">
           <Carousel items={items} />
         </div>
       </div>
