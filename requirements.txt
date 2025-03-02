@@ -12,3 +12,4 @@ typing_extensions>=4.12.2
 langgraph>=0.3.2
 langchain-chroma
 ipython>=9.0.0
+duckduckgo-search
