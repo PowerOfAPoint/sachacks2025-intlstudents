@@ -1,5 +1,5 @@
 # Use the official Python 3.13 image as a base image
-FROM python:3.12-slim
+FROM python:3.12.9-slim
 LABEL authors="stevenyuan"
 
 # Set environment variables
