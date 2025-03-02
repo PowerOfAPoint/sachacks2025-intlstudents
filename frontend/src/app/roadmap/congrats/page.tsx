@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import Header from "../../../components/header";
+import { ArrowLeft } from "lucide-react";
 
 export default function CongratsPage() {
   return (
@@ -13,36 +13,46 @@ export default function CongratsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex justify-center min-h-[60vh] px-6 py-10 mt-20">
+      <div className="flex justify-center items-center min-h-[60vh] px-6 py-10 mt-20">
         <div className="w-full max-w-7xl grid grid-cols-12 gap-8">
-
-          {/* Back to Home Button - Top Left */}
+          {/* Back to Roadmap Button */}
           <div className="col-span-12">
             <Link href="/roadmap">
               <div className="flex text-gray-500 hover:text-blue-600 cursor-pointer transition">
                 <ArrowLeft size={20} />
-                <span className="ml-2 text-sm font-medium">Back to Roadmap</span>
+                <span className="ml-2 text-sm font-medium">Back to Roadmap Overview</span>
               </div>
             </Link>
           </div>
 
-          {/* GIF Section */}
-          <div className="col-span-12 flex justify-center">
+          {/* Content - Congratulations Message */}
+          <div className="col-span-12 text-center space-y-6">
             <img
               src="/congrats.gif"
               alt="Congratulations Animation"
-              className="w-64 h-64 object-contain"
+              className="mx-auto"
             />
-          </div>
-
           {/* Title Area - Centered */}
           <div className="col-span-12 text-center space-y-4">
             <h1 className="text-4xl font-bold text-green-600">🎉 Congratulations!</h1>
             <p className="text-lg text-gray-700">
-              You’ve successfully completed all steps in the roadmap.
+              You’ve successfully completed every milestone on your visa journey!
             </p>
             <p className="text-gray-600">
-            You're now a roadmap pro! Let's pay it forward by helping others in the forum — after all, we fly farther when we fly together.            </p>
+              From your first internship offer to securing your Green Card, you've done it all.
+            </p>
+            <p className="text-gray-600 font-medium italic">
+              Now, let’s pay it forward—help fellow students in the forum and build a community where we all succeed together. 💬
+            </p>
+          </div>
+
+          {/* Back to Forum (Optional Link) */}
+          <div className="col-span-12 flex justify-center">
+            <Link href="/forum">
+              <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition">
+                Go to Forum & Help Others
+              </button>
+            </Link>
           </div>
 
         </div>

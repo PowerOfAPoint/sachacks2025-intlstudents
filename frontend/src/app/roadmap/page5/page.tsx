@@ -8,11 +8,22 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step5Page() {
   const tasks = [
-    "Check H-1B Lottery Results",
-    "Verify Cap-Gap Eligibility",
-    "Request Cap-Gap I-20 from DSO",
-    "Ensure No Work Gap Occurs",
-    "Track H-1B Petition Status",
+    {
+      title: "Confirm H-1B Filing",
+      description: "Ensure your employer has filed your H-1B petition during the cap season.",
+    },
+    {
+      title: "Notify Your DSO",
+      description: "Provide your DSO with proof of H-1B filing (such as Form I-797 receipt notice).",
+    },
+    {
+      title: "Receive Updated I-20",
+      description: "Obtain a new I-20 reflecting your Cap-Gap Extension from your DSO.",
+    },
+    {
+      title: "Continue Working",
+      description: "If your OPT expires before October 1, you are allowed to continue working under the Cap-Gap Extension.",
+    },
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -39,11 +50,9 @@ export default function Step5Page() {
       {/* Main Content */}
       <div className="flex justify-center items-center px-6 py-10 mt-20">
         <div className="w-full max-w-7xl grid grid-cols-12 gap-8">
-          {/* Back to Roadmap */}
+          {/* Back to Previous Milestone */}
           <div className="col-span-12">
-            <a href="/roadmap" className="text-gray-500 hover:text-blue-600 text-sm font-medium cursor-pointer">
-              ← Back to Roadmap
-            </a>
+            <ViewPreviousButton href="/roadmap/page4" label="STEM OPT Extension" />
           </div>
 
           {/* Progress Circle - Left Column */}
@@ -81,23 +90,27 @@ export default function Step5Page() {
 
           {/* Checklist - Right Column */}
           <div className="col-span-6 space-y-4 self-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 5 Tasks</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Milestone 5: Cap-Gap Extension</h3>
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
+                className={`p-4 rounded-lg shadow-sm border cursor-pointer transition-all space-y-2 ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                <span className="text-gray-800">{task}</span>
-                {completedTasks[index] ? (
-                  <CheckCircle className="text-green-600" size={24} />
-                ) : (
-                  <Circle className="text-gray-400" size={24} />
-                )}
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-800 font-semibold">{task.title}</span>
+                  {completedTasks[index] ? (
+                    <CheckCircle className="text-green-600" size={24} />
+                  ) : (
+                    <Circle className="text-gray-400" size={24} />
+                  )}
+                </div>
+                <hr className="border-t border-gray-200" />
+                <p className="text-gray-600 text-sm">{task.description}</p>
               </div>
             ))}
 

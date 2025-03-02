@@ -8,11 +8,22 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step6Page() {
   const tasks = [
-    "Confirm Employer’s H-1B Sponsorship",
-    "Gather Required Documents",
-    "File H-1B Petition with USCIS",
-    "Track Petition Status",
-    "Prepare for Visa Interview (if applicable)",
+    {
+      title: "Confirm H-1B Eligibility with Employer",
+      description: "Ensure your employer agrees to sponsor your H-1B visa.",
+    },
+    {
+      title: "File Labor Condition Application (LCA)",
+      description: "Your employer must submit the Labor Condition Application (LCA) to the Department of Labor.",
+    },
+    {
+      title: "Submit Form I-129",
+      description: "Your employer files the Form I-129 petition with USCIS via mail.",
+    },
+    {
+      title: "Wait for Approval",
+      description: "USCIS will review your application. Estimated processing time is 8-11 months with standard processing.",
+    },
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -39,11 +50,9 @@ export default function Step6Page() {
       {/* Main Content */}
       <div className="flex justify-center items-center px-6 py-10 mt-20">
         <div className="w-full max-w-7xl grid grid-cols-12 gap-8">
-          {/* Back to Roadmap */}
+          {/* Back to Previous Milestone */}
           <div className="col-span-12">
-            <a href="/roadmap" className="text-gray-500 hover:text-blue-600 text-sm font-medium cursor-pointer">
-              ← Back to Roadmap
-            </a>
+            <ViewPreviousButton href="/roadmap/page5" label="Cap-Gap Extension" />
           </div>
 
           {/* Progress Circle - Left Column */}
@@ -81,23 +90,27 @@ export default function Step6Page() {
 
           {/* Checklist - Right Column */}
           <div className="col-span-6 space-y-4 self-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 6 Tasks</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Milestone 6: H-1B Visa Application</h3>
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
+                className={`p-4 rounded-lg shadow-sm border cursor-pointer transition-all space-y-2 ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                <span className="text-gray-800">{task}</span>
-                {completedTasks[index] ? (
-                  <CheckCircle className="text-green-600" size={24} />
-                ) : (
-                  <Circle className="text-gray-400" size={24} />
-                )}
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-800 font-semibold">{task.title}</span>
+                  {completedTasks[index] ? (
+                    <CheckCircle className="text-green-600" size={24} />
+                  ) : (
+                    <Circle className="text-gray-400" size={24} />
+                  )}
+                </div>
+                <hr className="border-t border-gray-200" />
+                <p className="text-gray-600 text-sm">{task.description}</p>
               </div>
             ))}
 
