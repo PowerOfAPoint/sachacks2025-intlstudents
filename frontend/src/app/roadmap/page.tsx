@@ -15,7 +15,7 @@ interface Step {
 const slides = [
   {
     title: "Internship Offer",
-    category: "Milestone",
+    category: "Milestone 1",
     src: "/step1.png",
     content: (
       <ul className="list-disc pl-5">
@@ -23,10 +23,11 @@ const slides = [
         <li>Ensure the internship aligns with your field of study and career goals.</li>
       </ul>
     ),
+    link:"roadmap/page1",
   },
   {
     title: "Day 1 CPT",
-    category: "Milestone",
+    category: "Milestone 2",
     src: "/step2.png",
     content: (
       <ul className="list-disc pl-5">
@@ -35,11 +36,12 @@ const slides = [
         <li>Deadline: Apply at least 2 months before internship starts.</li>
       </ul>
     ),
+    link:"roadmap/page2",
   },
   {
     title: "OPT Application",
-    category: "Milestone",
-    src: "/images/opt-application.jpg",
+    category: "Milestone 3",
+    src: "/step3.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Apply for Optional Practical Training (OPT) after graduation.</li>
@@ -47,11 +49,12 @@ const slides = [
         <li>Deadline: Apply within 90 days before graduation.</li>
       </ul>
     ),
+    link:"roadmap/page3",
   },
   {
     title: "STEM OPT Extension",
-    category: "Milestone",
-    src: "/images/stem-opt.jpg",
+    category: "Milestone 4",
+    src: "/step4.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Apply for a 24-month STEM OPT extension.</li>
@@ -59,28 +62,31 @@ const slides = [
         <li>Deadline: Apply within 90 days before OPT ends.</li>
       </ul>
     ),
+    link:"roadmap/page4",
   },
   {
     title: "Cap-Gap Extension",
     category: "Milestone",
-    src: "/images/cap-gap.jpg",
+    src: "/step5.png",
     content: (
       <ul className="list-disc pl-5">
         <li>If your H-1B is pending, apply for Cap-Gap extension.</li>
         <li>Confirm eligibility with your employer.</li>
       </ul>
     ),
+    link:"roadmap/page5",
   },
   {
     title: "H-1B Visa Application",
     category: "Milestone",
-    src: "/images/h1b-application.jpg",
+    src: "/step6.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Work with your employer to file the H-1B petition.</li>
         <li>Deadline: Apply on April 1 during the annual cap season.</li>
       </ul>
     ),
+    link:"roadmap/page6",
   },
   {
     title: "H-1B Visa Approval",
@@ -92,17 +98,19 @@ const slides = [
         <li>Understand timelines for each stage (PERM, I-140, Adjustment of Status).</li>
       </ul>
     ),
+    link:"roadmap/page7",
   },
   {
     title: "Apply For Citizenship",
     category: "Milestone",
-    src: "/step7.png",
+    src: "/step8.png",
     content: (
       <ul className="list-disc pl-5">
         <li>Start the PERM labor certification process with your employer.</li>
         <li>Understand timelines for each stage (PERM, I-140, Adjustment of Status).</li>
       </ul>
     ),
+    link:"roadmap/page8",
   },
 ];
 
@@ -115,6 +123,7 @@ const items = slides.map((slide, index) => (
       title: slide.title,
       category: slide.category,
       content: slide.content,
+      link: slide.link,
     }}
     index={index}
     layout={true}
@@ -141,14 +150,14 @@ export default function RoadmapPage() {
 
   return (
     <>
-      <style>
+      {/* <style>
         {`
           html, body {
             height: 100%;
             overflow: hidden;
           }
         `}
-      </style>
+      </style> */}
 
       {/* Fixed Header */}
       <div className="fixed top-0 left-0 w-full z-20 bg-white shadow-md">
@@ -156,13 +165,13 @@ export default function RoadmapPage() {
       </div>
 
       {/* Main Roadmap Section */}
-      <div className="min-h-screen flex flex-col items-center bg-gray-100 px-6 py-10">
-        <h1 className="text-4xl font-extrabold text-gray-900 mt-16 text-center">
-          Your Visa & Career Roadmap
-        </h1>
+      <div className="min-h-screen mt-14 px-6 py-10">
+        <h2 className=" pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+            Your Complete Roadmap.
+        </h2>
 
         {/* Carousel Section */}
-        <div className="flex justify-center items-center min-h-[60vh] mt-8 w-full">
+        <div className="flex justify-center items-center min-h-[60vh] w-full">
           <Carousel items={items} />
         </div>
       </div>
