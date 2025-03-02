@@ -55,6 +55,7 @@ def search_and_retrieve_from_web(query: str, news_backend: bool = False) -> Tupl
     search = DuckDuckGoSearchResults(output_format='list', num_results=5, keys_to_include=['link'])
     results = search.invoke(query, backend='news') if news_backend else search.invoke(f'{query} site:(.gov | .edu)')
 
+    chromadb.api.client.SharedSystemClient.clear_system_cache()
     vector_store = Chroma(embedding_function=OpenAIEmbeddings())
 
     loader = WebBaseLoader(
