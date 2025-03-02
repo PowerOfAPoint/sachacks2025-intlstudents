@@ -18,22 +18,21 @@ export default function CongratsPage() {
           {/* Back to Roadmap Button */}
           <div className="col-span-12">
             <Link href="/roadmap">
-              <div className="flex text-gray-500 hover:text-blue-600 cursor-pointer transition">
+              <div className="flex items-center text-gray-500 hover:text-blue-600 cursor-pointer transition">
                 <ArrowLeft size={20} />
                 <span className="ml-2 text-sm font-medium">Back to Roadmap Overview</span>
               </div>
             </Link>
           </div>
 
-          {/* Content - Congratulations Message */}
+          {/* Congratulations Content */}
           <div className="col-span-12 text-center space-y-6">
             <img
               src="/congrats.gif"
               alt="Congratulations Animation"
-              className="mx-auto"
+              className="mx-auto w-64 h-64 object-contain"
             />
-          {/* Title Area - Centered */}
-          <div className="col-span-12 text-center space-y-4">
+
             <h1 className="text-4xl font-bold text-green-600">🎉 Congratulations!</h1>
             <p className="text-lg text-gray-700">
               You’ve successfully completed every milestone on your visa journey!
@@ -44,17 +43,16 @@ export default function CongratsPage() {
             <p className="text-gray-600 font-medium italic">
               Now, let’s pay it forward—help fellow students in the forum and build a community where we all succeed together. 💬
             </p>
-          </div>
 
-          {/* Back to Forum (Optional Link) */}
-          <div className="col-span-12 flex justify-center">
-            <Link href="/forum">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition">
-                Go to Forum & Help Others
-              </button>
-            </Link>
+            {/* Back to Forum Button */}
+            <div className="flex justify-center">
+              <Link href="/forum">
+                <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition">
+                  Go to Forum & Help Others
+                </button>
+              </Link>
+            </div>
           </div>
-
         </div>
       </div>
     </>
