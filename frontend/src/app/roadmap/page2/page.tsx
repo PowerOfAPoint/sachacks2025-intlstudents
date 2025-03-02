@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -9,12 +8,22 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step2Page() {
   const tasks = [
-    "Find Internship Opportunities",
-    "Update Resume & LinkedIn",
-    "Prepare for Technical Interviews",
-    "Get Offer Letter from Employer",
-    "Submit OPT Application to School",
-    "Wait for OPT Approval",
+    {
+      title: "Contact Your DSO",
+      description: "Please schedule a meeting with your DSO and relevant parties to confirm your program allows CPT.",
+    },
+    {
+      title: "Enroll in CPT-Eligible Course",
+      description: "Register for a course that requires work experience to receive academic credits.",
+    },
+    {
+      title: "Submit CPT Application",
+      description: "Complete the CPT application form provided by your school.",
+    },
+    {
+      title: "Receive Updated I-20",
+      description: "Wait for approval and receive your updated I-20 with CPT authorization.",
+    },
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -41,11 +50,9 @@ export default function Step2Page() {
       {/* Main Content */}
       <div className="flex justify-center items-center px-6 py-10 mt-20">
         <div className="w-full max-w-7xl grid grid-cols-12 gap-8">
-          {/* Back to Roadmap (global) */}
+          {/* Back to Roadmap */}
           <div className="col-span-12">
-            <a href="/roadmap" className="text-gray-500 hover:text-blue-600 text-sm font-medium cursor-pointer">
-              ← Back to Roadmap
-            </a>
+            <ViewPreviousButton href="/roadmap/page1" label="Internship Offer" />
           </div>
 
           {/* Progress Circle - Left Column */}
@@ -78,35 +85,39 @@ export default function Step2Page() {
                 {completionPercentage}%
               </div>
             </div>
-            <span className="text-lg text-gray-600">Internship & OPT Checklist</span>
+            <span className="text-lg text-gray-600">Day 1 CPT Checklist</span>
           </div>
 
           {/* Checklist - Right Column */}
           <div className="col-span-6 space-y-4 self-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 2 Tasks</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Milestone 2: Day 1 CPT</h3>
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
+                className={`p-4 rounded-lg shadow-sm border cursor-pointer transition-all space-y-2 ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                <span className="text-gray-800">{task}</span>
-                {completedTasks[index] ? (
-                  <CheckCircle className="text-green-600" size={24} />
-                ) : (
-                  <Circle className="text-gray-400" size={24} />
-                )}
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-800 font-semibold">{task.title}</span>
+                  {completedTasks[index] ? (
+                    <CheckCircle className="text-green-600" size={24} />
+                  ) : (
+                    <Circle className="text-gray-400" size={24} />
+                  )}
+                </div>
+                <hr className="border-t border-gray-200" />
+                <p className="text-gray-600 text-sm">{task.description}</p>
               </div>
             ))}
 
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-6">
-              <ViewPreviousButton href="/roadmap/page1" label="View Previous: Day 1 CPT" />
-              <ViewNextButton href="/roadmap/page3" label="View Next: OPT Application" />
+              <ViewPreviousButton href="/roadmap/page1" label="Internship Offer" />
+              <ViewNextButton href="/roadmap/page3" label="OPT Application" />
             </div>
           </div>
         </div>
