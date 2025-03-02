@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Any
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -29,7 +29,7 @@ class Request(BaseModel):
 
 class Response(BaseModel):
     response: str = Field(..., description="API response")
-    sources: List[Document] = Field(default_factory=list)
+    sources: List[Any] = Field(default_factory=list)
 
 
 # Endpoints
@@ -60,7 +60,7 @@ async def process_query(
 
         return Response(
             response=step['messages'][-1].content,
-            sources=step['context'][0] if step['context'] else []
+            sources=[doc for docs in step['context'] for doc in docs] if (step['context'] and step['context'][0]) else []
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

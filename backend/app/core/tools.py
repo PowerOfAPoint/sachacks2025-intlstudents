@@ -1,5 +1,6 @@
 from typing import Tuple, Any
 
+import chromadb.api
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.tools import DuckDuckGoSearchResults
@@ -27,6 +28,7 @@ def retrieve_from_urls(query: str, web_paths: list[str]):
     """
     Retrieve content from a provided list of URLs that are related to a query.
     """
+    chromadb.api.client.SharedSystemClient.clear_system_cache()
     vector_store = Chroma(embedding_function=OpenAIEmbeddings())
 
     loader = WebBaseLoader(

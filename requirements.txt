@@ -14,3 +14,4 @@ langchain-chroma
 ipython>=9.0.0
 duckduckgo-search
 beautifulsoup4
+chromadb
