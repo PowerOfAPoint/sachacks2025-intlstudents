@@ -8,22 +8,14 @@ import ViewNextButton from "../../../components/ui/view-next";
 
 export default function Step8Page() {
   const tasks = [
-    {
-      title: "Confirm Green Card Eligibility",
-      description: "Confirm your eligibility category (employment-based, family-based, etc.) before you start.",
-    },
-    {
-      title: "File Immigrant Petition",
-      description: "Work with your employer or sponsor to file Form I-140 (employment-based) or Form I-130 (family-based).",
-    },
-    {
-      title: "File Form I-485",
-      description: "Submit the Application to Adjust Status, if applicable, once your petition is approved.",
-    },
-    {
-      title: "Attend Biometrics Appointment",
-      description: "Complete fingerprinting and background checks as required by USCIS.",
-    },
+    "Meet Eligibility Requirements (5 Years Permanent Residency)",
+    "Prepare Form N-400 (Application for Naturalization)",
+    "Gather Supporting Documents",
+    "Submit Application and Pay Fee",
+    "Complete Biometrics Appointment",
+    "Attend Citizenship Interview",
+    "Pass the Civics and English Test",
+    "Receive Decision and Attend Oath Ceremony",
   ];
 
   const [completedTasks, setCompletedTasks] = useState<boolean[]>(
@@ -50,9 +42,11 @@ export default function Step8Page() {
       {/* Main Content */}
       <div className="flex justify-center items-center px-6 py-10 mt-20">
         <div className="w-full max-w-7xl grid grid-cols-12 gap-8">
-          {/* Back to Previous Milestone */}
+          {/* Back to Roadmap */}
           <div className="col-span-12">
-            <ViewPreviousButton href="/roadmap/page7" label="H-1B Visa Approval" />
+            <a href="/roadmap" className="text-gray-500 hover:text-blue-600 text-sm font-medium cursor-pointer">
+              ← Back to Roadmap
+            </a>
           </div>
 
           {/* Progress Circle - Left Column */}
@@ -85,38 +79,34 @@ export default function Step8Page() {
                 {completionPercentage}%
               </div>
             </div>
-            <span className="text-lg text-gray-600">Green Card Application Checklist</span>
+            <span className="text-lg text-gray-600">Apply For Citizenship Checklist</span>
           </div>
 
           {/* Checklist - Right Column */}
           <div className="col-span-6 space-y-4 self-center">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Milestone 8: Green Card Application</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">Step 8 Tasks</h3>
             {tasks.map((task, index) => (
               <div
                 key={index}
-                className={`p-4 rounded-lg shadow-sm border cursor-pointer transition-all space-y-2 ${
+                className={`flex justify-between items-center p-4 rounded-lg shadow-sm border cursor-pointer transition-all ${
                   completedTasks[index]
                     ? "bg-green-50 border-green-400"
                     : "bg-white border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => toggleTask(index)}
               >
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-800 font-semibold">{task.title}</span>
-                  {completedTasks[index] ? (
-                    <CheckCircle className="text-green-600" size={24} />
-                  ) : (
-                    <Circle className="text-gray-400" size={24} />
-                  )}
-                </div>
-                <hr className="border-t border-gray-200" />
-                <p className="text-gray-600 text-sm">{task.description}</p>
+                <span className="text-gray-800">{task}</span>
+                {completedTasks[index] ? (
+                  <CheckCircle className="text-green-600" size={24} />
+                ) : (
+                  <Circle className="text-gray-400" size={24} />
+                )}
               </div>
             ))}
 
             {/* Navigation Buttons */}
             <div className="flex justify-between mt-6">
-              <ViewPreviousButton href="/roadmap/page7" label="H-1B Visa Approval" />
+                <ViewPreviousButton href="/roadmap/page7" label="H-1B Visa Approval" />
               <ViewNextButton href="/roadmap/congrats" label="Congratulations!" />
             </div>
           </div>
