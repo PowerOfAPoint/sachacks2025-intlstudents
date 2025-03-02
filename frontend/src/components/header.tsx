@@ -1,9 +1,16 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { buttonVariants } from "./ui/button";
 
-export default function Header() {
+export default async function Header() {
+  const user = await auth.api
+    .getSession({
+      headers: await headers(),
+    })
+    .then((res) => res?.user);
+
   return (
     <header className="w-full ">
       <div className="container mx-auto flex items-center justify-between py-4 ">
@@ -30,12 +37,18 @@ export default function Header() {
         </nav>
 
         {/* Join Button */}
-        <Link
-          href="/sign-up"
-          className="bg-[#1B768E] hover:bg-[#012538] text-white px-4 py-2 rounded-md text-sm font-medium transition "
-        >
-          Join the Flock
-        </Link>
+        {user ? (
+          <button className={buttonVariants({ variant: "outline" })}>
+            <p>Hello, {user.name}</p>
+          </button>
+        ) : (
+          <Link
+            href="/sign-up"
+            className="bg-[#1B768E] hover:bg-[#012538] text-white px-4 py-2 rounded-md text-sm font-medium transition "
+          >
+            Join the Flock
+          </Link>
+        )}
       </div>
     </header>
   );

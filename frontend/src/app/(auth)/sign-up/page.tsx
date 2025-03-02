@@ -26,6 +26,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import { redirect } from "@/app/api/_actions/redirect";
 
 export default function SignInPage() {
   const form = useForm<TSignUp>({
@@ -42,7 +44,7 @@ export default function SignInPage() {
       name: values.name,
       email: values.email,
       password: values.password,
-      callbackURL: "/dashboard",
+      callbackURL: "/",
     });
 
     if (error) {
@@ -50,6 +52,8 @@ export default function SignInPage() {
         description: error.message,
       });
     }
+
+    await redirect("/");
   };
 
   return (

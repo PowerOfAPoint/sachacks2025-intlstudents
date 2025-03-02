@@ -54,8 +54,8 @@ export default function LandingPage() {
           {/* Subheading */}
           <p className="text-lg max-w-2xl text-muted-foreground leading-relaxed">
             Supercharge your career in the U.S. with personalized guidance from
-            Day 1 CPT to OPT, STEM OPT, Cap-Gap, and H-1B sponsorship — tailored
-            for F-1 students in tech.
+            Day 1 CPT to OPT, STEM OPT, Cap-Gap, and H-1B sponsorships —
+            tailored for F-1 students in tech.
           </p>
 
           {/* Call to Action */}
@@ -63,7 +63,7 @@ export default function LandingPage() {
             href="/sign-up"
             className="inline-block bg-[#1B768E] text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-[#012538] transition"
           >
-            Join Today - It’s Free
+            Join Today - It&apos;s Free
           </a>
 
           {/* Founding Team */}
