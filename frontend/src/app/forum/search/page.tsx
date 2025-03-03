@@ -4,10 +4,11 @@ import { fetchPosts } from "@/lib/forum/posts";
 import { redirect } from "next/navigation";
 
 export default async function ForumSearch({
-  searchParams: { query },
+  searchParams,
 }: {
-  searchParams: Partial<{ query: string }>;
+  searchParams: Promise<Partial<{ query: string }>>;
 }) {
+  const { query } = await searchParams;
   if (!query || query.length < 1) {
     redirect("/forum");
   }

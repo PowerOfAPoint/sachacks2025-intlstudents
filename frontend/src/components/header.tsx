@@ -1,15 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { buttonVariants } from "./ui/button";
+import { authClient } from "@/lib/auth/client";
 
-export default async function Header() {
-  const user = await auth.api
-    .getSession({
-      headers: await headers(),
-    })
-    .then((res) => res?.user);
+export default function Header() {
+  const session = authClient.useSession();
 
   return (
     <header className="w-full ">
@@ -37,9 +34,9 @@ export default async function Header() {
         </nav>
 
         {/* Join Button */}
-        {user ? (
+        {session.data?.user ? (
           <button className={buttonVariants({ variant: "outline" })}>
-            <p>Hello, {user.name}</p>
+            <p>Hello, {session.data.user.name}</p>
           </button>
         ) : (
           <Link

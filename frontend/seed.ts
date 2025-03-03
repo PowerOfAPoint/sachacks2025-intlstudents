@@ -1,3 +1,6 @@
+import * as dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
+
 import { db } from "@/lib/db";
 import { Group, group } from "@/lib/db/forum";
 import { exit } from "process";

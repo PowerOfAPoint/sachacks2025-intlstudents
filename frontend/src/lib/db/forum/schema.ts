@@ -112,7 +112,7 @@ export const comment = pgTable(
       .references(() => user.id),
     postId: text("post_id")
       .notNull()
-      .references(() => post.id),
+      .references(() => post.id, { onDelete: "cascade" }),
     content: json("content").notNull(),
     createdAt: timestamp("created_at").defaultNow(),
   },

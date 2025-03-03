@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postbuild": "npm i -g bun && bun seed.ts",
     "db:start": "docker compose up",
     "db:push": "drizzle-kit push",
     "db:migrate": "drizzle-kit migrate",
