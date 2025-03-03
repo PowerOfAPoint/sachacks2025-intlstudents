@@ -78,7 +78,7 @@ export const vote = pgTable(
       .notNull()
       .references(() => user.id),
   },
-  (t) => [unique("unique_post_vote").on(t.objId, t.userId)],
+  (t) => [unique("unique_obj_vote").on(t.objId, t.userId)],
 );
 
 export type Tag = typeof tag.$inferSelect;
@@ -89,7 +89,7 @@ export const tag = pgTable("tag", {
 
 export type TagsToPosts = typeof tagsToPosts.$inferSelect;
 export const tagsToPosts = pgTable(
-  "tagsToPosts",
+  "tags_to_posts",
   {
     id: serial("id").primaryKey(),
     postId: text("post_id")

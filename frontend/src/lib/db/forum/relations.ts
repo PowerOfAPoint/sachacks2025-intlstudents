@@ -12,7 +12,7 @@ import { user } from "../auth";
 
 export const groupRelations = relations(group, ({ many }) => ({
   posts: many(post, { relationName: "post_groups" }),
-  members: many(groupsToUsers, { relationName: "groups_to_user" }),
+  members: many(groupsToUsers, { relationName: "groups_to_users" }),
 }));
 
 export const groupsToUsersRelations = relations(groupsToUsers, ({ one }) => ({
@@ -41,7 +41,6 @@ export const postRelations = relations(post, ({ one, many }) => ({
   }),
   tags: many(tagsToPosts, { relationName: "posts_to_tags" }),
   comments: many(comment, { relationName: "comments" }),
-  votes: many(vote, { relationName: "post_votes" }),
 }));
 
 export const voteRelations = relations(vote, ({ one }) => ({
