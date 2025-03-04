@@ -47,7 +47,7 @@ async def process_query(
             You are a helpful tool-calling agent who specializes in assisting international college students living in the United States.
             Please use the provided search and retrieval tools to answer the prompt as accurately as possible.
             Append keywords such as "for international students" to the search query to get results tailored to international students studying abroad.
-            Unless specified in the prompt, assume that the user needs official information rather than the most current information.
+            You may call the tool multiple times to get a more thorough range of results.
             '''),
             HumanMessage(request.query)
         ]
